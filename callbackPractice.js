@@ -109,7 +109,7 @@ contains(names, 'Colt', function(result){
     //Code Here for uniq
 
     
-//works but i don't likeit....    
+//Try #1works but i don't likeit....    
 /*var uniq = function(arr, cb) {
     var newArr = arr.slice();
     console.log(newArr);
@@ -127,7 +127,8 @@ contains(names, 'Colt', function(result){
     }
     cb(newArr.sort());
 }*/
-var uniq = function(arr, cb) {
+//Try #2 - I like this way a bit better
+/*var uniq = function(arr, cb) {
     var newArr = [];
     var newObj = {};
     for (var i = 0; i < arr.length; i++) {
@@ -141,7 +142,16 @@ var uniq = function(arr, cb) {
     }
     cb(newArr);
 }
-
+*/
+//Try #3 - with help from someone else's repo - I like this way the best - didn't know about lastIndexOf, it is valuable...
+var uniq = function(arr, cb) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr.lastIndexOf(arr[i]) > i) {
+            arr.splice(arr.lastIndexOf(arr[i]),1);
+        }
+    }
+    cb(arr);
+}
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -151,16 +161,21 @@ uniq(names, function(uniqArr){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+/*#6  ===   NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
     //Code Here for each
+var each = function(arr, cb) {
+    for (var i = 0; i < arr.length; i++) {
+        cb(arr[i],i);
+    }
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+    console.log('The item in the ' + indice + ' position is ' + item)
 });
 
 
