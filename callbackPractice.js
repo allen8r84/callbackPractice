@@ -108,6 +108,40 @@ contains(names, 'Colt', function(result){
 
     //Code Here for uniq
 
+    
+//works but i don't likeit....    
+/*var uniq = function(arr, cb) {
+    var newArr = arr.slice();
+    console.log(newArr);
+    for (var i = 0; i < newArr.length; i++) {
+        var currName = arr[i];
+        console.log(currName);
+        for (var j = i; j < newArr.length; j++) {
+            var tempName = newArr[j + 1]
+            console.log(tempName)
+            if (currName === tempName) {
+                newArr.splice(newArr.indexOf(tempName),1);
+            }
+        }
+        
+    }
+    cb(newArr.sort());
+}*/
+var uniq = function(arr, cb) {
+    var newArr = [];
+    var newObj = {};
+    for (var i = 0; i < arr.length; i++) {
+        var tempPlace = arr[i];
+        newObj[tempPlace] = tempPlace;
+    }
+    for (var key in newObj) {
+        if (newObj[key]) {
+            newArr.push(key);
+        }
+    }
+    cb(newArr);
+}
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
