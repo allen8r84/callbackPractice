@@ -74,14 +74,20 @@ multiply(4, 3, function(answer){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+/*#4 ===  NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
 
   //Code Here for contains
-
+var contains = function(arr, a, cb) {
+    if (arr.indexOf(a) !== -1){
+        cb(true);
+    } else {
+        cb(fales);
+    }
+}
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
   if(result === true){
